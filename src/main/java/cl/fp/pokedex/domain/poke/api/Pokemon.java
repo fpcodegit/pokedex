@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Pokemon {
+    private String name;
     private Integer weight;
     private List<PokemonType> types;
     private List<PokemonAbility> abilities;
