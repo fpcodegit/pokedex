@@ -1,12 +1,14 @@
 package cl.fp.pokedex.domain.pokedex;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
-@Builder
+@Builder(toBuilder = true)
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pokemon {
     private String name;
     private String imageUrl;
