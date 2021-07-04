@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -21,7 +22,8 @@ public class PokedexController {
     private Integer defaultOffset;
 
     @GetMapping
-    public Pokedex getPokedex(Optional<Integer> optionalLimit, Optional<Integer> optionalOffset) {
+    public Pokedex getPokedex(@RequestParam("limit") Optional<Integer> optionalLimit,
+                              @RequestParam("offset") Optional<Integer> optionalOffset) {
         Integer limit = optionalLimit.orElse(defaultLimit);
         Integer offset = optionalOffset.orElse(defaultOffset);
         return defaultPokedexService.getPokedex(limit, offset);
