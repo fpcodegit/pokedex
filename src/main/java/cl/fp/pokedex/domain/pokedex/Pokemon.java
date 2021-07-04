@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pokemon {
+    private Integer id;
     private String name;
     private String imageUrl;
     private List<String> type;
