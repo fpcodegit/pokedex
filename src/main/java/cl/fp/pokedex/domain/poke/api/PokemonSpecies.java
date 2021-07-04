@@ -9,6 +9,6 @@ import java.util.List;
 public class PokemonSpecies {
     @JsonProperty("evolution_chain")
     private ApiResource evolutionChain;
-    @JsonProperty("flavour_text_entries")
-    private List<FlavourTextEntry> flavourTextEntries;
+    @JsonProperty("flavor_text_entries")
+    private List<FlavorTextEntry> flavorTextEntries;
 }

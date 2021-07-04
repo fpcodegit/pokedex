@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class FlavourTextEntry {
-    @JsonProperty("flavour_text")
-    private String flavourText;
+public class FlavorTextEntry {
+    @JsonProperty("flavor_text")
+    private String flavorText;
     private NamedApiResource language;
 }
