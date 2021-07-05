@@ -3,6 +3,7 @@ package cl.fp.pokedex.domain.pokedex;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.hateoas.Link;
 
 import java.util.List;
 
@@ -10,7 +11,6 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pokemon {
-    private Integer id;
     private String name;
     private String imageUrl;
     private List<String> type;
@@ -18,4 +18,5 @@ public class Pokemon {
     private List<String> abilities;
     private String description;
     private List<String> evolutions;
+    private List<Link> links;
 }

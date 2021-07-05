@@ -2,6 +2,7 @@ package cl.fp.pokedex.domain.pokedex;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.hateoas.Link;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
 @Data
 public class Pokedex {
     private List<Pokemon> pokemons;
+    private List<Link> links;
 }

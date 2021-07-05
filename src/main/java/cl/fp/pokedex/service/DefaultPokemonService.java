@@ -9,6 +9,7 @@ import cl.fp.pokedex.domain.poke.api.Pokemon;
 import cl.fp.pokedex.domain.poke.api.PokemonAbility;
 import cl.fp.pokedex.domain.poke.api.PokemonSpecies;
 import cl.fp.pokedex.domain.poke.api.PokemonType;
+import cl.fp.pokedex.link.builder.PokemonLinkBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.singletonList;
+
 @RequiredArgsConstructor
 @Service
 public class DefaultPokemonService implements PokemonService {
     private final PokeApiClient restTemplatePokeApiClient;
+    private final PokemonLinkBuilder pokemonLinkBuilder;
     @Value("${pokedex.api.pokemon.description.language}")
     private String descriptionLanguage;
     @Value("${pokedex.api.pokemon.description.not.available}")
@@ -41,6 +45,7 @@ public class DefaultPokemonService implements PokemonService {
                         .map(PokemonAbility::getAbility)
                         .map(NamedApiResource::getName)
                         .collect(Collectors.toList()))
+                .links(singletonList(pokemonLinkBuilder.getSelfLink(apiPokemon.getId())))
                 .build();
     }
 
