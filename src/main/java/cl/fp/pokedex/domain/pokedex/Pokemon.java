@@ -13,7 +13,7 @@ import java.util.List;
 public class Pokemon {
     private String name;
     private String imageUrl;
-    private List<String> type;
+    private List<String> types;
     private Integer weight;
     private List<String> abilities;
     private String description;

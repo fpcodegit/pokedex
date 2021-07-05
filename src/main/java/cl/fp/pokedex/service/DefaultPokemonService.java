@@ -36,7 +36,7 @@ public class DefaultPokemonService implements PokemonService {
         return cl.fp.pokedex.domain.pokedex.Pokemon.builder()
                 .name(apiPokemon.getName())
                 .imageUrl(apiPokemon.getSprites().getFrontDefault())
-                .type(apiPokemon.getTypes().stream()
+                .types(apiPokemon.getTypes().stream()
                         .map(PokemonType::getType)
                         .map(NamedApiResource::getName)
                         .collect(Collectors.toList()))
