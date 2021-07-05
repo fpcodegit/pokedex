@@ -3,9 +3,11 @@ package cl.fp.pokedex.client;
 import cl.fp.pokedex.domain.poke.api.PokemonList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Cacheable("pokeApi")
 @Component
 @RequiredArgsConstructor
 public class RestTemplatePokeApiClient implements PokeApiClient {
