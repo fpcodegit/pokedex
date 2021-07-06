@@ -30,6 +30,7 @@ public class DefaultPokedexService implements PokedexService {
         return Pokedex.builder()
                 .pokemons(pokemonList)
                 .links(asList(pokedexLinkBuilder.getSelfLink(limit, offset),
+                        pokedexLinkBuilder.getPrevLink(limit, offset),
                         pokedexLinkBuilder.getNextLink(limit, offset)))
                 .build();
     }

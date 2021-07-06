@@ -9,11 +9,14 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Component
 public class PokedexLinkBuilder {
+    private static final String LIMIT = "limit";
+    private static final String OFFSET = "offset";
+
     public Link getSelfLink(Integer limit, Integer offset) {
         return of(linkTo(PokedexController.class)
                 .toUriComponentsBuilder()
-                .queryParam("limit", limit)
-                .queryParam("offset", offset)
+                .queryParam(LIMIT, limit)
+                .queryParam(OFFSET, offset)
                 .build()
                 .toString());
     }
@@ -21,9 +24,22 @@ public class PokedexLinkBuilder {
     public Link getNextLink(Integer limit, Integer offset) {
         return of(linkTo(PokedexController.class)
                 .toUriComponentsBuilder()
-                .queryParam("limit", limit)
-                .queryParam("offset", offset + limit)
+                .queryParam(LIMIT, limit)
+                .queryParam(OFFSET, offset + limit)
                 .build()
                 .toString(), "next");
+    }
+
+    public Link getPrevLink(Integer limit, Integer offset) {
+        int newOffset = offset - limit;
+        if (newOffset < 0) {
+            newOffset = 0;
+        }
+        return of(linkTo(PokedexController.class)
+                .toUriComponentsBuilder()
+                .queryParam(LIMIT, limit)
+                .queryParam(OFFSET, newOffset)
+                .build()
+                .toString(), "prev");
     }
 }
