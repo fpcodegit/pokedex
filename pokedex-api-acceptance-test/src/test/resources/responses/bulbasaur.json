@@ -1,0 +1,25 @@
+{
+  "name": "bulbasaur",
+  "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+  "types": [
+    "grass",
+    "poison"
+  ],
+  "weight": 69,
+  "abilities": [
+    "overgrow",
+    "chlorophyll"
+  ],
+  "description": "A strange seed was\nplanted on its\nback at birth.\fThe plant sprouts\nand grows with\nthis POKéMON.",
+  "evolutions": [
+    "bulbasaur",
+    "ivysaur",
+    "venusaur"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/pokemon/1"
+    }
+  ]
+}

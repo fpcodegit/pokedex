@@ -8,6 +8,6 @@ import org.springframework.test.context.TestPropertySource;
 @CucumberContextConfiguration
 @SpringBootTest(classes = PokedexApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureWireMock(port = 9090)
-@TestPropertySource(locations = "classpath:application.properties")
+@TestPropertySource("classpath:application-acceptance-test.properties")
 public class SpringIntegrationTest {
 }
