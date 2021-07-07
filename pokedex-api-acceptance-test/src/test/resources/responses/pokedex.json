@@ -1,0 +1,202 @@
+{
+  "pokemons": [
+    {
+      "name": "bulbasaur",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "weight": 69,
+      "abilities": [
+        "overgrow",
+        "chlorophyll"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/1"
+        }
+      ]
+    },
+    {
+      "name": "ivysaur",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "weight": 130,
+      "abilities": [
+        "overgrow",
+        "chlorophyll"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/2"
+        }
+      ]
+    },
+    {
+      "name": "venusaur",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "weight": 1000,
+      "abilities": [
+        "overgrow",
+        "chlorophyll"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/3"
+        }
+      ]
+    },
+    {
+      "name": "charmander",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "types": [
+        "fire"
+      ],
+      "weight": 85,
+      "abilities": [
+        "blaze",
+        "solar-power"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/4"
+        }
+      ]
+    },
+    {
+      "name": "charmeleon",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+      "types": [
+        "fire"
+      ],
+      "weight": 190,
+      "abilities": [
+        "blaze",
+        "solar-power"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/5"
+        }
+      ]
+    },
+    {
+      "name": "charizard",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "types": [
+        "fire",
+        "flying"
+      ],
+      "weight": 905,
+      "abilities": [
+        "blaze",
+        "solar-power"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/6"
+        }
+      ]
+    },
+    {
+      "name": "squirtle",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+      "types": [
+        "water"
+      ],
+      "weight": 90,
+      "abilities": [
+        "torrent",
+        "rain-dish"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/7"
+        }
+      ]
+    },
+    {
+      "name": "wartortle",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
+      "types": [
+        "water"
+      ],
+      "weight": 225,
+      "abilities": [
+        "torrent",
+        "rain-dish"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/8"
+        }
+      ]
+    },
+    {
+      "name": "blastoise",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+      "types": [
+        "water"
+      ],
+      "weight": 855,
+      "abilities": [
+        "torrent",
+        "rain-dish"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/9"
+        }
+      ]
+    },
+    {
+      "name": "caterpie",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
+      "types": [
+        "bug"
+      ],
+      "weight": 29,
+      "abilities": [
+        "shield-dust",
+        "run-away"
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8080/pokemon/10"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/pokedex?limit=10&offset=0"
+    },
+    {
+      "rel": "prev",
+      "href": "http://localhost:8080/pokedex?limit=10&offset=0"
+    },
+    {
+      "rel": "next",
+      "href": "http://localhost:8080/pokedex?limit=10&offset=10"
+    }
+  ]
+}

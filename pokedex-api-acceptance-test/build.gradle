@@ -15,8 +15,35 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-spring:' + cucumberVersion
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock:' + wiremockVersion
+    testImplementation 'io.rest-assured:rest-assured:4.4.0'
+
 }
 
-test {
-    useJUnitPlatform()
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+bootJar {
+    enabled = false;
+}
+
+jar {
+    enabled = true;
+}
+
+task cucumberCli() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--glue', 'cl.fp.pokedex',
+                    'src/test/resources']
+        }
+    }
 }
