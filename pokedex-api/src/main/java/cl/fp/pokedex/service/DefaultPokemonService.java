@@ -1,23 +1,18 @@
 package cl.fp.pokedex.service;
 
 import cl.fp.pokedex.client.PokeApiClient;
-import cl.fp.pokedex.domain.poke.api.ChainLink;
 import cl.fp.pokedex.domain.poke.api.EvolutionChain;
 import cl.fp.pokedex.domain.poke.api.FlavorTextEntry;
-import cl.fp.pokedex.domain.poke.api.NamedApiResource;
 import cl.fp.pokedex.domain.poke.api.Pokemon;
 import cl.fp.pokedex.domain.poke.api.PokemonAbility;
 import cl.fp.pokedex.domain.poke.api.PokemonSpecies;
 import cl.fp.pokedex.domain.poke.api.PokemonType;
 import cl.fp.pokedex.link.builder.PokemonLinkBuilder;
+import cl.fp.pokedex.mapper.Mapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.Collections.singletonList;
 
@@ -26,10 +21,10 @@ import static java.util.Collections.singletonList;
 public class DefaultPokemonService implements PokemonService {
     private final PokeApiClient restTemplatePokeApiClient;
     private final PokemonLinkBuilder pokemonLinkBuilder;
-    @Value("${pokedex.api.pokemon.description.language}")
-    private String descriptionLanguage;
-    @Value("${pokedex.api.pokemon.description.not.available}")
-    private String descriptionNotAvailableMessage;
+    private final Mapper<List<PokemonType>, List<String>> typesMapper;
+    private final Mapper<List<PokemonAbility>, List<String>> abilitiesMapper;
+    private final Mapper<List<FlavorTextEntry>, String> descriptionMapper;
+    private final Mapper<EvolutionChain, List<String>> evolutionsMapper;
 
     @Override
     public cl.fp.pokedex.domain.pokedex.Pokemon getDetailPokemon(String url) {
@@ -43,57 +38,12 @@ public class DefaultPokemonService implements PokemonService {
         return cl.fp.pokedex.domain.pokedex.Pokemon.builder()
                 .name(apiPokemon.getName())
                 .imageUrl(apiPokemon.getSprites().getFrontDefault())
-                .types(getTypes(apiPokemon.getTypes()))
+                .types(typesMapper.map(apiPokemon.getTypes()))
                 .weight(apiPokemon.getWeight())
-                .abilities(getAbilities(apiPokemon.getAbilities()))
-                .description(getDescription(apiPokemonSpecies.getFlavorTextEntries()))
-                .evolutions(getEvolutions(apiEvolutionChain))
+                .abilities(abilitiesMapper.map(apiPokemon.getAbilities()))
+                .description(descriptionMapper.map(apiPokemonSpecies.getFlavorTextEntries()))
+                .evolutions(evolutionsMapper.map(apiEvolutionChain))
                 .links(singletonList(pokemonLinkBuilder.getSelfLink(apiPokemon.getId())))
                 .build();
-    }
-
-    private List<String> getTypes(List<PokemonType> types) {
-        if (types == null || types.isEmpty()) {
-            return Collections.emptyList();
-        }
-        return types.stream()
-                .map(PokemonType::getType)
-                .map(NamedApiResource::getName)
-                .collect(Collectors.toList());
-    }
-
-    private List<String> getAbilities(List<PokemonAbility> abilities) {
-        if (abilities == null || abilities.isEmpty()) {
-            return Collections.emptyList();
-        }
-        return abilities.stream()
-                .map(PokemonAbility::getAbility)
-                .map(NamedApiResource::getName)
-                .collect(Collectors.toList());
-    }
-
-    private String getDescription(List<FlavorTextEntry> flavorTextEntries) {
-        if (flavorTextEntries == null || flavorTextEntries.isEmpty()) {
-            return "";
-        }
-        return flavorTextEntries.stream()
-                .filter(flavorTextEntry -> descriptionLanguage.equals(flavorTextEntry.getLanguage().getName()))
-                .findFirst()
-                .map(FlavorTextEntry::getFlavorText)
-                .orElse(descriptionNotAvailableMessage);
-    }
-
-    private List<String> getEvolutions(EvolutionChain evolutionChain) {
-        List<String> evolutions = new ArrayList<>();
-        ChainLink currentChainLink = evolutionChain.getChain();
-        while (currentChainLink != null) {
-            evolutions.add(currentChainLink.getSpecies().getName());
-            List<ChainLink> evolvesTo = currentChainLink.getEvolvesTo();
-            if (evolvesTo.isEmpty()) {
-                break;
-            }
-            currentChainLink = evolvesTo.get(0);
-        }
-        return evolutions;
     }
 }
