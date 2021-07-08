@@ -19,7 +19,7 @@ public class PokedexSteps {
 
     @Given("^the pokeApi pokemon endpoint is available$")
     public void thePokeApiPokemonEndpointIsAvailable() {
-        givenThat(get(urlPathEqualTo("/api/v2/pokemon"))
+        givenThat(get(urlPathEqualTo("/api/v2/pokemon/"))
                 .withQueryParam("limit", equalTo("10"))
                 .withQueryParam("offset", equalTo("0"))
                 .willReturn(ok()

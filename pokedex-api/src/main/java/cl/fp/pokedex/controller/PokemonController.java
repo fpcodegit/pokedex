@@ -2,8 +2,8 @@ package cl.fp.pokedex.controller;
 
 import cl.fp.pokedex.domain.pokedex.Pokemon;
 import cl.fp.pokedex.service.PokemonService;
+import cl.fp.pokedex.url.builder.PokeApiUrlBuilder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PokemonController {
     private final PokemonService defaultPokemonService;
-    @Value("${pokedex.api.pokemon.detail.base.url}")
-    private String basePokemonUrl;
+    private final PokeApiUrlBuilder pokeApiUrlBuilder;
 
     @CrossOrigin("${pokedex.api.cors.enabled}")
     @GetMapping("{id}")
     public Pokemon getPokemon(@PathVariable String id) {
-        final String pokemonUrl = basePokemonUrl + id;
+        final String pokemonUrl = pokeApiUrlBuilder.getPokemonWithId(id);
         return defaultPokemonService.getDetailPokemon(pokemonUrl);
     }
 }
