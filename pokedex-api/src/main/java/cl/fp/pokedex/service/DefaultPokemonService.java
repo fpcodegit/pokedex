@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,25 +32,6 @@ public class DefaultPokemonService implements PokemonService {
     private String descriptionNotAvailableMessage;
 
     @Override
-    public cl.fp.pokedex.domain.pokedex.Pokemon getBasicPokemon(String url) {
-        Pokemon apiPokemon = restTemplatePokeApiClient.getResource(url, Pokemon.class);
-        return cl.fp.pokedex.domain.pokedex.Pokemon.builder()
-                .name(apiPokemon.getName())
-                .imageUrl(apiPokemon.getSprites().getFrontDefault())
-                .types(apiPokemon.getTypes().stream()
-                        .map(PokemonType::getType)
-                        .map(NamedApiResource::getName)
-                        .collect(Collectors.toList()))
-                .weight(apiPokemon.getWeight())
-                .abilities(apiPokemon.getAbilities().stream()
-                        .map(PokemonAbility::getAbility)
-                        .map(NamedApiResource::getName)
-                        .collect(Collectors.toList()))
-                .links(singletonList(pokemonLinkBuilder.getSelfLink(apiPokemon.getId())))
-                .build();
-    }
-
-    @Override
     public cl.fp.pokedex.domain.pokedex.Pokemon getDetailPokemon(String url) {
         Pokemon apiPokemon = restTemplatePokeApiClient.getResource(url, Pokemon.class);
         String pokemonSpeciesUrl = apiPokemon.getSpecies().getUrl();
@@ -58,14 +40,47 @@ public class DefaultPokemonService implements PokemonService {
         String evolutionChainUrl = apiPokemonSpecies.getEvolutionChain().getUrl();
         EvolutionChain apiEvolutionChain = restTemplatePokeApiClient
                 .getResource(evolutionChainUrl, EvolutionChain.class);
-        return getBasicPokemon(url).toBuilder()
-                .description(apiPokemonSpecies.getFlavorTextEntries().stream()
-                        .filter(flavorTextEntry -> descriptionLanguage.equals(flavorTextEntry.getLanguage().getName()))
-                        .findFirst()
-                        .map(FlavorTextEntry::getFlavorText)
-                        .orElse(descriptionNotAvailableMessage))
+        return cl.fp.pokedex.domain.pokedex.Pokemon.builder()
+                .name(apiPokemon.getName())
+                .imageUrl(apiPokemon.getSprites().getFrontDefault())
+                .types(getTypes(apiPokemon.getTypes()))
+                .weight(apiPokemon.getWeight())
+                .abilities(getAbilities(apiPokemon.getAbilities()))
+                .description(getDescription(apiPokemonSpecies.getFlavorTextEntries()))
                 .evolutions(getEvolutions(apiEvolutionChain))
+                .links(singletonList(pokemonLinkBuilder.getSelfLink(apiPokemon.getId())))
                 .build();
+    }
+
+    private List<String> getTypes(List<PokemonType> types) {
+        if (types == null || types.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return types.stream()
+                .map(PokemonType::getType)
+                .map(NamedApiResource::getName)
+                .collect(Collectors.toList());
+    }
+
+    private List<String> getAbilities(List<PokemonAbility> abilities) {
+        if (abilities == null || abilities.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return abilities.stream()
+                .map(PokemonAbility::getAbility)
+                .map(NamedApiResource::getName)
+                .collect(Collectors.toList());
+    }
+
+    private String getDescription(List<FlavorTextEntry> flavorTextEntries) {
+        if (flavorTextEntries == null || flavorTextEntries.isEmpty()) {
+            return "";
+        }
+        return flavorTextEntries.stream()
+                .filter(flavorTextEntry -> descriptionLanguage.equals(flavorTextEntry.getLanguage().getName()))
+                .findFirst()
+                .map(FlavorTextEntry::getFlavorText)
+                .orElse(descriptionNotAvailableMessage);
     }
 
     private List<String> getEvolutions(EvolutionChain evolutionChain) {

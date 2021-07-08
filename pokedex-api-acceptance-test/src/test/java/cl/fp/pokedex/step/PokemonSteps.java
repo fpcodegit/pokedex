@@ -1,7 +1,6 @@
 package cl.fp.pokedex.step;
 
 import cl.fp.pokedex.common.TestInformation;
-import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;

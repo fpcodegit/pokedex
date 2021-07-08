@@ -12,6 +12,12 @@
         "overgrow",
         "chlorophyll"
       ],
+      "description": "A strange seed was\nplanted on its\nback at birth.\fThe plant sprouts\nand grows with\nthis POKéMON.",
+      "evolutions": [
+        "bulbasaur",
+        "ivysaur",
+        "venusaur"
+      ],
       "links": [
         {
           "rel": "self",
@@ -30,6 +36,12 @@
       "abilities": [
         "overgrow",
         "chlorophyll"
+      ],
+      "description": "When the bulb on\nits back grows\nlarge, it appears\fto lose the\nability to stand\non its hind legs.",
+      "evolutions": [
+        "bulbasaur",
+        "ivysaur",
+        "venusaur"
       ],
       "links": [
         {
@@ -50,6 +62,12 @@
         "overgrow",
         "chlorophyll"
       ],
+      "description": "The plant blooms\nwhen it is\nabsorbing solar\fenergy. It stays\non the move to\nseek sunlight.",
+      "evolutions": [
+        "bulbasaur",
+        "ivysaur",
+        "venusaur"
+      ],
       "links": [
         {
           "rel": "self",
@@ -68,6 +86,12 @@
         "blaze",
         "solar-power"
       ],
+      "description": "Obviously prefers\nhot places. When\nit rains, steam\fis said to spout\nfrom the tip of\nits tail.",
+      "evolutions": [
+        "charmander",
+        "charmeleon",
+        "charizard"
+      ],
       "links": [
         {
           "rel": "self",
@@ -85,6 +109,12 @@
       "abilities": [
         "blaze",
         "solar-power"
+      ],
+      "description": "When it swings\nits burning tail,\nit elevates the\ftemperature to\nunbearably high\nlevels.",
+      "evolutions": [
+        "charmander",
+        "charmeleon",
+        "charizard"
       ],
       "links": [
         {
@@ -105,6 +135,12 @@
         "blaze",
         "solar-power"
       ],
+      "description": "Spits fire that\nis hot enough to\nmelt boulders.\fKnown to cause\nforest fires\nunintentionally.",
+      "evolutions": [
+        "charmander",
+        "charmeleon",
+        "charizard"
+      ],
       "links": [
         {
           "rel": "self",
@@ -122,6 +158,12 @@
       "abilities": [
         "torrent",
         "rain-dish"
+      ],
+      "description": "Shoots water at\nprey while in the\nwater.\fWithdraws into\nits shell when in\ndanger.",
+      "evolutions": [
+        "squirtle",
+        "wartortle",
+        "blastoise"
       ],
       "links": [
         {
@@ -141,6 +183,12 @@
         "torrent",
         "rain-dish"
       ],
+      "description": "When tapped, this\nPOKéMON will pull\nin its head, but\fits tail will\nstill stick out a\nlittle bit.",
+      "evolutions": [
+        "squirtle",
+        "wartortle",
+        "blastoise"
+      ],
       "links": [
         {
           "rel": "self",
@@ -159,6 +207,12 @@
         "torrent",
         "rain-dish"
       ],
+      "description": "It deliberately\nmakes itself heavy\nso it can with­\fstand the recoil\nof the water jets\nit fires.",
+      "evolutions": [
+        "squirtle",
+        "wartortle",
+        "blastoise"
+      ],
       "links": [
         {
           "rel": "self",
@@ -176,6 +230,12 @@
       "abilities": [
         "shield-dust",
         "run-away"
+      ],
+      "description": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+      "evolutions": [
+        "caterpie",
+        "metapod",
+        "butterfree"
       ],
       "links": [
         {

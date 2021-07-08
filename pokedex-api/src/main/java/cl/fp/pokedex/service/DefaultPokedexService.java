@@ -28,7 +28,7 @@ public class DefaultPokedexService implements PokedexService {
         PokemonList apiPokemonList = restTemplatePokeApiClient.getResource(pokemonListUrl, PokemonList.class);
         List<Pokemon> pokemonList = apiPokemonList.getResults()
                 .stream()
-                .map(namedApiResource -> defaultPokemonService.getBasicPokemon(namedApiResource.getUrl()))
+                .map(namedApiResource -> defaultPokemonService.getDetailPokemon(namedApiResource.getUrl()))
                 .collect(Collectors.toList());
         return Pokedex.builder()
                 .pokemons(pokemonList)
