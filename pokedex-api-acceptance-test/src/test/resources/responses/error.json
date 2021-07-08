@@ -1,0 +1,7 @@
+{
+  "status": 500,
+  "error": "Internal Server Error",
+  "exception": "org.springframework.web.client.HttpClientErrorException$NotFound",
+  "message": "404 Not Found: [{\n}]",
+  "path": "/pokemon/0"
+}

@@ -42,8 +42,9 @@ task cucumberCli() {
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:target/cucumber-report.html',
-                    '--glue', 'cl.fp.pokedex',
-                    'src/test/resources']
+                    '--glue', 'cl.fp.pokedex', 'src/test/resources',
+                    '--tags', 'not @pending'
+            ]
         }
     }
 }

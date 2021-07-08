@@ -1,6 +1,7 @@
 package cl.fp.pokedex.step;
 
 import cl.fp.pokedex.common.TestInformation;
+import cl.fp.pokedex.domain.Error;
 import cl.fp.pokedex.domain.pokedex.Pokedex;
 import cl.fp.pokedex.domain.pokedex.Pokemon;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,9 +34,16 @@ public class CommonSteps {
         if ("Pokemon".equals(type)) {
             typeOfResponse = Pokemon.class;
         }
+        if ("Error".equals(type)) {
+            typeOfResponse = Error.class;
+        }
         assertNotNull(typeOfResponse);
         Object expectedResponse = objectMapper.readValue(bytes, typeOfResponse);
         Object actualResponse = response.body().as(typeOfResponse);
+        if ("Error".equals(type)) {
+            assertNotNull(((Error) actualResponse).getTimestamp());
+            ((Error) actualResponse).setTimestamp(null);
+        }
         assertEquals(expectedResponse, actualResponse);
     }
 }
