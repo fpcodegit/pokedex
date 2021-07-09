@@ -1,0 +1,1 @@
+web: pwd;java -jar lib/pokedex-api-0.0.1.jar
