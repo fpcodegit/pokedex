@@ -8,6 +8,10 @@ repositories {
     mavenCentral()
 }
 
+group = 'cl.fp'
+version = '0.0.1'
+sourceCompatibility = '1.8'
+
 dependencies {
     testImplementation project(path: ':pokedex-api', configuration: 'default')
     testImplementation 'io.cucumber:cucumber-java:' + cucumberVersion
