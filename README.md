@@ -106,7 +106,7 @@ The applications use cache for the external API calls, currently uses a simple o
 implementation for *'org.springframework.boot:spring-boot-starter-cache'*. 
 The cache is clean when the application starts.
 
-#####Testing
+####Testing
 1. Unit tests: For unit tests in the applications Junit5 and mockito are used. **Located in 
 *pokedex-api/src/test/java/cl.fp.pokedex***
 
@@ -114,6 +114,13 @@ The cache is clean when the application starts.
 the actual response of the application. To provide an alternative to call the real external API, wiremock was used to 
 provide stubs for the external API. Cucumber, Junit5, wiremock and RestAssured were used to achieve this testing.
 **Located in *pokedex-api-acceptance-test/src/test/resources/features***
+
+####Useful commands
+1. **./gradlew** run the default task ('clean', 'build', 'cucumberCli') in the specified order.
+1. **./gradlew build** create the executable jar (*pokedex-api/build/libs/pokedex-api-0.0.1.jar*) and run unit tests.
+1. **./gradlew test** run only unit tests.
+1. **./gradlew cucumberCli** run only cucumber tests.
+1. **./gradlew bootRun** starts the application from command line.
 
 ---
 
