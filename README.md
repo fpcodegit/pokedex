@@ -1,9 +1,9 @@
-#Pokedex API
-###Spring boot application to expose Pokedex API consumed from https://pokeapi.co
+# Pokedex API
+### Spring boot application to expose Pokedex API consumed from https://pokeapi.co
 
-######Config Server Code: https://github.com/fpcodegit/config-server-pokedex
-######Front end Code: https://github.com/fpcodegit/fp-pokedex-svelte
-######Central configuration repository: https://github.com/fpcodegit/config-server-repo
+###### Config Server Code: https://github.com/fpcodegit/config-server-pokedex
+###### Front end Code: https://github.com/fpcodegit/fp-pokedex-svelte
+###### Central configuration repository: https://github.com/fpcodegit/config-server-repo
 
 This API exposes 2 endpoints to provide the required functionality:
 1. ***/pokedex*** Expose a list of Pokemon with details.
@@ -87,7 +87,7 @@ This API exposes 2 endpoints to provide the required functionality:
    }
     ```
    
-####Error handling
+#### Error handling
 There is not a dedicated error handling logic, just using the default provided by SpringBoot, that will return a 
 response like this in case of any error happens:
 ```json
@@ -101,12 +101,12 @@ response like this in case of any error happens:
 }
 ```
 
-####Cache
+#### Cache
 The applications use cache for the external API calls, currently uses a simple on memory cache that is the default 
 implementation for *'org.springframework.boot:spring-boot-starter-cache'*. 
 The cache is clean when the application starts.
 
-####Testing
+#### Testing
 1. Unit tests: For unit tests in the applications Junit5 and mockito are used. **Located in 
 *pokedex-api/src/test/java/cl.fp.pokedex***
 
@@ -115,7 +115,7 @@ the actual response of the application. To provide an alternative to call the re
 provide stubs for the external API. Cucumber, Junit5, wiremock and RestAssured were used to achieve this testing.
 **Located in *pokedex-api-acceptance-test/src/test/resources/features***
 
-####Useful commands
+#### Useful commands
 1. **./gradlew** run the default task ('clean', 'build', 'cucumberCli') in the specified order.
 1. **./gradlew build** create the executable jar (*pokedex-api/build/libs/pokedex-api-0.0.1.jar*) and run unit tests.
 1. **./gradlew test** run only unit tests.
@@ -124,8 +124,8 @@ provide stubs for the external API. Cucumber, Junit5, wiremock and RestAssured w
 
 ---
 
-#####Deploy instructions
-######Heroku:
+##### Deploy instructions
+###### Heroku:
 1. As the project is gradle based, it required some extra configuration in the build.gradle, the task stage was add
  to work with the Heroku deployment steps.
     ```groovy
