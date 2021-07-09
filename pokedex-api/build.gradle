@@ -30,3 +30,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task stage(dependsOn: ['bootJar']) {
+    doLast {
+        'bootJar'
+    }
+}
