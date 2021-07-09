@@ -1,1 +1,8 @@
 defaultTasks = ['clean', 'build', 'cucumberCli']
+
+task stage(dependsOn: ['pokedex-api:clean', 'pokedex-api:bootJar']) {
+    doFirst {
+        'pokedex-api:clean'
+        'pokedex-api:bootJar'
+    }
+}
