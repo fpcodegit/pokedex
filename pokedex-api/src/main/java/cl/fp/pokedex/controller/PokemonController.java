@@ -4,12 +4,14 @@ import cl.fp.pokedex.domain.pokedex.Pokemon;
 import cl.fp.pokedex.service.PokemonService;
 import cl.fp.pokedex.url.builder.PokeApiUrlBuilder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RefreshScope
 @RequestMapping("pokemon")
 @RequiredArgsConstructor
 @RestController

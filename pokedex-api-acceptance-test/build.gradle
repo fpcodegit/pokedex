@@ -23,6 +23,12 @@ dependencies {
 
 }
 
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:' + springCloudVersion
+    }
+}
+
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
