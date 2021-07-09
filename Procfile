@@ -1,1 +1,1 @@
-web: ls;java -jar pokedex-api/build/libs/pokedex-api-0.0.1.jar
+web: java -Dserver.port=$PORT $JAVA_OPT -jar pokedex-api/build/libs/pokedex-api-0.0.1.jar
